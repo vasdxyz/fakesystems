@@ -1,0 +1,8 @@
+{
+  "name": "xyz.vasd.fakesystems",
+  "displayName": "FakeSystems",
+  "unity": "2021.3",
+  "description": "A small library for managing systems",
+  "version": "0.0.1",
+  "hideInEditor": false
+}

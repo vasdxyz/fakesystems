@@ -1,0 +1,4 @@
+namespace Xyz.Vasd.FakeSystems
+{
+
+}
