@@ -2,7 +2,7 @@
   "name": "xyz.vasd.fakesystems",
   "displayName": "FakeSystems",
   "unity": "2021.3",
-  "description": "A small library for managing systems",
+  "description": "Ordered systems on top of MonoBehaviours",
   "version": "0.0.1",
   "hideInEditor": false
 }
