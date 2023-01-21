@@ -1,23 +1,18 @@
 ﻿using UnityEngine;
+using Xyz.Vasd.FakeData;
 
 namespace Xyz.Vasd.FakeSystems
 {
     public class FakeSystemManager : MonoBehaviour
     {
-        public FakeSystemGroup[] Groups;
-
-        private void Awake()
-        {
-            foreach (var group in Groups)
-            {
-                group.InitSystemGroup();
-            }
-        }
+        public FakeDataBase DataBase { get; protected set; }
+        public FakeSystemGroup[] SystemGroups { get; protected set; }
 
         private void OnEnable()
         {
-            foreach (var group in Groups)
+            foreach (var group in SystemGroups)
             {
+                group.InitSystemGroup(this);
                 group.StartAllSystems();
                 group.Stage_Start();
             }
@@ -25,7 +20,7 @@ namespace Xyz.Vasd.FakeSystems
 
         private void Update()
         {
-            foreach (var group in Groups)
+            foreach (var group in SystemGroups)
             {
                 group.Stage_Update();
             }
@@ -33,7 +28,7 @@ namespace Xyz.Vasd.FakeSystems
 
         private void LateUpdate()
         {
-            foreach (var group in Groups)
+            foreach (var group in SystemGroups)
             {
                 group.Stage_LateUpdate();
             }
@@ -41,7 +36,7 @@ namespace Xyz.Vasd.FakeSystems
 
         private void FixedUpdate()
         {
-            foreach (var group in Groups)
+            foreach (var group in SystemGroups)
             {
                 group.Stage_Start();
                 group.Stage_FixedUpdate();
@@ -51,7 +46,7 @@ namespace Xyz.Vasd.FakeSystems
 
         private void OnDisable()
         {
-            foreach (var group in Groups)
+            foreach (var group in SystemGroups)
             {
                 group.StopAllSystems();
                 group.Stage_Stop();

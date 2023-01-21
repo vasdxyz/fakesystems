@@ -5,6 +5,8 @@ namespace Xyz.Vasd.FakeSystems
 {
     public class FakeSystemGroup : MonoBehaviour
     {
+        private FakeSystemManager _manager;
+
         private List<IFakeSystem> _systems = new List<IFakeSystem>();
 
         private List<IFakeSystem> _systemsToStart = new List<IFakeSystem>();
@@ -13,9 +15,9 @@ namespace Xyz.Vasd.FakeSystems
         private List<IFixedUpdateFakeSystem> _systemsToFixedUpdate = new List<IFixedUpdateFakeSystem>();
         private List<IFakeSystem> _systemsToStop = new List<IFakeSystem>();
 
-        public virtual void InitSystemGroup()
+        public virtual void InitSystemGroup(FakeSystemManager manager)
         {
-
+            _manager = manager;
         }
 
         // add all systems to start queue
@@ -69,6 +71,7 @@ namespace Xyz.Vasd.FakeSystems
 
                 try
                 {
+                    system.OnSystemSetup(_manager);
                     system.OnSystemStart();
                 }
                 catch (System.Exception)

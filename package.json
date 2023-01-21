@@ -3,7 +3,7 @@
   "displayName": "FakeSystems",
   "unity": "2021.3",
   "description": "Ordered systems on top of MonoBehaviours",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "hideInEditor": false,
   "samples": [
     {
